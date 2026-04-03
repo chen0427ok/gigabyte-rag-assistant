@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+
+# uv / venv
+.venv/
+.env
+
+# Model files (too large for git)
+*.gguf
+*.bin
+*.safetensors
+models/
+
+# Vector index (regeneratable)
+data/index/
+
+# Raw scraped data cache
+data/cache/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

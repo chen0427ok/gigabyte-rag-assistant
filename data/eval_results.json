@@ -1,0 +1,205 @@
+[
+  {
+    "id": 1,
+    "category": "直接查詢",
+    "query": "BZH 的顯示晶片是什麼？",
+    "expected_key": "顯示晶片",
+    "expected_hint": [
+      "5090",
+      "RTX"
+    ],
+    "retrieval_hit": true,
+    "answer_correct": true,
+    "answer": "BZH 的顯示晶片是 NVIDIA® GeForce RTX™ 5090 Laptop GPU。",
+    "ttft_sec": 3.04,
+    "tps": 3.93,
+    "total_tokens": 21,
+    "total_sec": 5.341
+  },
+  {
+    "id": 2,
+    "category": "直接查詢",
+    "query": "這台筆電的記憶體最大是多少？",
+    "expected_key": "記憶體",
+    "expected_hint": [
+      "64GB"
+    ],
+    "retrieval_hit": true,
+    "answer_correct": true,
+    "answer": "這台筆電的記憶體最大是64GB。",
+    "ttft_sec": 0.931,
+    "tps": 6.42,
+    "total_tokens": 14,
+    "total_sec": 2.18
+  },
+  {
+    "id": 3,
+    "category": "直接查詢",
+    "query": "螢幕解析度是多少？",
+    "expected_key": "顯示器",
+    "expected_hint": [
+      "2560",
+      "1600"
+    ],
+    "retrieval_hit": true,
+    "answer_correct": true,
+    "answer": "螢幕解析度是 2560x1600。",
+    "ttft_sec": 2.954,
+    "tps": 3.54,
+    "total_tokens": 16,
+    "total_sec": 4.52
+  },
+  {
+    "id": 4,
+    "category": "直接查詢",
+    "query": "電池容量是多少？",
+    "expected_key": "電池",
+    "expected_hint": [
+      "99Wh",
+      "99"
+    ],
+    "retrieval_hit": true,
+    "answer_correct": true,
+    "answer": "電池容量是 99Wh。",
+    "ttft_sec": 0.851,
+    "tps": 5.43,
+    "total_tokens": 9,
+    "total_sec": 1.657
+  },
+  {
+    "id": 5,
+    "category": "直接查詢",
+    "query": "鍵盤有幾個 RGB 燈光區域？",
+    "expected_key": "鍵盤種類",
+    "expected_hint": [
+      "3區"
+    ],
+    "retrieval_hit": true,
+    "answer_correct": true,
+    "answer": "3區",
+    "ttft_sec": 1.257,
+    "tps": 1.44,
+    "total_tokens": 2,
+    "total_sec": 1.388
+  },
+  {
+    "id": 6,
+    "category": "型號比較",
+    "query": "BZH 和 BYH 的 GPU 有什麼不同？",
+    "expected_key": "顯示晶片",
+    "expected_hint": [
+      "5090",
+      "5080"
+    ],
+    "retrieval_hit": true,
+    "answer_correct": false,
+    "answer": "BZH 和 BYH 的 GPU 主要不同在於顯示晶片的型號和記憶體容量。BYH 使用的是 NVIDIA® GeForce RTX™ 5080 Laptop GPU，而 BZH 使用的是 NVIDIA® GeForce RTX™ 5070 Ti Laptop GPU。此外，BYH 提供的記憶體容量為 16GB GDDR7，BZH 的則是 12GB GDDR7。",
+    "ttft_sec": 1.785,
+    "tps": 8.79,
+    "total_tokens": 95,
+    "total_sec": 10.804
+  },
+  {
+    "id": 7,
+    "category": "型號比較",
+    "query": "哪個型號的顯示晶片最強？",
+    "expected_key": "顯示晶片",
+    "expected_hint": [
+      "BZH",
+      "5090"
+    ],
+    "retrieval_hit": true,
+    "answer_correct": true,
+    "answer": "技嘉筆電 AORUS MASTER 16 BZH 的顯示晶片最強，其規格為 NVIDIA® GeForce RTX™ 5090 Laptop GPU。",
+    "ttft_sec": 1.837,
+    "tps": 7.04,
+    "total_tokens": 38,
+    "total_sec": 5.396
+  },
+  {
+    "id": 8,
+    "category": "是非推論",
+    "query": "這台筆電有支援 Thunderbolt 5 嗎？",
+    "expected_key": "連接埠",
+    "expected_hint": [
+      "是",
+      "支援"
+    ],
+    "retrieval_hit": true,
+    "answer_correct": true,
+    "answer": "是的，這台筆電支援 Thunderbolt 5。資料中左側連接埠有列出 \"1 x Type-C with Thunderbolt™5 (support USB4, DisplayPort™ 2.1 and Power Delivery 3.0)\"。",
+    "ttft_sec": 3.698,
+    "tps": 6.09,
+    "total_tokens": 53,
+    "total_sec": 8.703
+  },
+  {
+    "id": 9,
+    "category": "是非推論",
+    "query": "螢幕有支援 Dolby Vision 嗎？",
+    "expected_key": "顯示器",
+    "expected_hint": [
+      "Dolby",
+      "是",
+      "支援"
+    ],
+    "retrieval_hit": true,
+    "answer_correct": true,
+    "answer": "是的，螢幕支援 Dolby Vision®。",
+    "ttft_sec": 2.764,
+    "tps": 2.7,
+    "total_tokens": 11,
+    "total_sec": 4.075
+  },
+  {
+    "id": 10,
+    "category": "英文查詢",
+    "query": "What is the RAM capacity?",
+    "expected_key": "記憶體",
+    "expected_hint": [
+      "64GB"
+    ],
+    "retrieval_hit": true,
+    "answer_correct": true,
+    "answer": "64GB",
+    "ttft_sec": 1.39,
+    "tps": 1.88,
+    "total_tokens": 3,
+    "total_sec": 1.596
+  },
+  {
+    "id": 11,
+    "category": "英文查詢",
+    "query": "How many USB ports does this laptop have?",
+    "expected_key": "連接埠",
+    "expected_hint": [
+      "USB",
+      "Type-A",
+      "Type-C"
+    ],
+    "retrieval_hit": true,
+    "answer_correct": true,
+    "answer": "2 Type-A support USB3.2 Gen2\n1 Type-C with Thunderbolt™5 (support USB4, DisplayPort™ 2.1 and Power Delivery 3.0)",
+    "ttft_sec": 3.257,
+    "tps": 5.77,
+    "total_tokens": 39,
+    "total_sec": 6.759
+  },
+  {
+    "id": 12,
+    "category": "英文查詢",
+    "query": "What GPU does the BXH model have?",
+    "expected_key": "顯示晶片",
+    "expected_hint": [
+      "5070",
+      "RTX"
+    ],
+    "retrieval_hit": true,
+    "answer_correct": true,
+    "answer": "NVIDIA® GeForce RTX™ 5070 Ti Laptop GPU",
+    "ttft_sec": 2.076,
+    "tps": 4.16,
+    "total_tokens": 15,
+    "total_sec": 3.605
+  }
+]

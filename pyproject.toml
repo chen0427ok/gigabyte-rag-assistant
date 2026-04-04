@@ -1,7 +1,7 @@
 [project]
 name = "gigabyte-rag-assistant"
 version = "0.1.0"
-description = "Add your description here"
+description = "純 Python RAG 問答系統，針對 GIGABYTE AORUS MASTER 16 AM6H 產品規格，支援繁體中文與英文混合查詢"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

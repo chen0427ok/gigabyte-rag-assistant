@@ -1,0 +1,308 @@
+[
+  {
+    "id": 0,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "作業系統",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 作業系統 規格為：Windows 11 Pro (GIGABYTE recommends Windows 11 Pro for business.), Windows 11 Home, UEFI Shell OS。"
+  },
+  {
+    "id": 1,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "中央處理器",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 中央處理器 規格為：Intel® Core™ Ultra 9 Processor 275HX (36MB cache, up to 5.4 GHz, 24 cores, 24 threads)。"
+  },
+  {
+    "id": 2,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "顯示晶片",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 顯示晶片 規格為：NVIDIA® GeForce RTX™ 5090 Laptop GPU, 24GB GDDR7, 175W Maximum Graphics Power with Dynamic Boost*, AI Boost : 1797 MHz (1597 MHz Boost Clock + 200 MHz OC)*, *May vary by scenario。"
+  },
+  {
+    "id": 3,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "顯示器",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 顯示器 規格為：16\" 16:10, OLED WQXGA (2560x1600) 240Hz, 1ms, DCIP-3 100%, 500nits (peak), 1,000,000:1, NVIDIA® G-SYNC®, NVIDIA® Advanced Optimus, VESA DisplayHDR True Black 500, VESA ClearMR 10000, Pantone® Validated, TÜV Rheinland Low Blue Light, Dolby Vision®。"
+  },
+  {
+    "id": 4,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "記憶體",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 記憶體 規格為：Up to 64GB DDR5 5600MHz, * 2x SO-DIMM sockets for expansion。"
+  },
+  {
+    "id": 5,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "儲存裝置",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 儲存裝置 規格為：1x PCIe Gen5 M.2 slot, 1x PCIe Gen4x4 M.2 slots, Up to 4TB PCIe NVMe™ M.2 SSD, *The storage capacity may differ by country and region.。"
+  },
+  {
+    "id": 6,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "鍵盤種類",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 鍵盤種類 規格為：3-zone RGB Backlit Keyboard, Up to 1.7mm Key-travel (Support N-Key)。"
+  },
+  {
+    "id": 7,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "連接埠",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 連接埠 規格為：Left Side:, 1 x DC in, 1 x RJ-45, 1 x HDMI 2.1, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™5 (support USB4, DisplayPort™ 2.1 and Power Delivery 3.0), Right Side:, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™4 (support USB4, DisplayPort™ 1.4 and Power Delivery 3.0), 1 x MicroSD (UHS-II), 1 x Audio Jack support mic / headphone combo。"
+  },
+  {
+    "id": 8,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "音效",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 音效 規格為：4x 2W speakers, Microphone, Dolby Atmos®, Smart Amp Technology。"
+  },
+  {
+    "id": 9,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "通訊",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 通訊 規格為：WIFI 7 (802.11be 2x2), LAN: 1G, Bluetooth v5.4。"
+  },
+  {
+    "id": 10,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "視訊鏡頭",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 視訊鏡頭 規格為：FHD (1080p) IR Webcam, Build-in array Microphone, Support Windows Hello Face Authentication。"
+  },
+  {
+    "id": 11,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "安全裝置",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 安全裝置 規格為：Firmware-based TPM, supports Intel® Platform Trust Technology (Intel® PTT)。"
+  },
+  {
+    "id": 12,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "電池",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 電池 規格為：Li Polymer 99Wh。"
+  },
+  {
+    "id": 13,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "變壓器",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 變壓器 規格為：330W AC Adapter。"
+  },
+  {
+    "id": 14,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "尺寸",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 尺寸 規格為：357 x 254 x 23~29.9 mm。"
+  },
+  {
+    "id": 15,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "重量",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 重量 規格為：~2.5 kg。"
+  },
+  {
+    "id": 16,
+    "model": "AORUS MASTER 16 BZH",
+    "key": "顏色",
+    "text": "技嘉筆電 AORUS MASTER 16 BZH 的 顏色 規格為：Dark Tide。"
+  },
+  {
+    "id": 17,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "作業系統",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 作業系統 規格為：Windows 11 Pro (GIGABYTE recommends Windows 11 Pro for business.), Windows 11 Home, UEFI Shell OS。"
+  },
+  {
+    "id": 18,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "中央處理器",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 中央處理器 規格為：Intel® Core™ Ultra 9 Processor 275HX (36MB cache, up to 5.4 GHz, 24 cores, 24 threads)。"
+  },
+  {
+    "id": 19,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "顯示晶片",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 顯示晶片 規格為：NVIDIA® GeForce RTX™ 5080 Laptop GPU, 16GB GDDR7, 175W Maximum Graphics Power with Dynamic Boost*, AI Boost : 1902 MHz (1702 MHz Boost Clock + 200 MHz OC)*, *May vary by scenario。"
+  },
+  {
+    "id": 20,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "顯示器",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 顯示器 規格為：16\" 16:10, OLED WQXGA (2560x1600) 240Hz, 1ms, DCIP-3 100%, 500nits (peak), 1,000,000:1, NVIDIA® G-SYNC®, NVIDIA® Advanced Optimus, VESA DisplayHDR True Black 500, VESA ClearMR 10000, Pantone® Validated, TÜV Rheinland Low Blue Light, Dolby Vision®。"
+  },
+  {
+    "id": 21,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "記憶體",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 記憶體 規格為：Up to 64GB DDR5 5600MHz, * 2x SO-DIMM sockets for expansion。"
+  },
+  {
+    "id": 22,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "儲存裝置",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 儲存裝置 規格為：1x PCIe Gen5 M.2 slot, 1x PCIe Gen4x4 M.2 slots, Up to 4TB PCIe NVMe™ M.2 SSD, *The storage capacity may differ by country and region.。"
+  },
+  {
+    "id": 23,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "鍵盤種類",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 鍵盤種類 規格為：3-zone RGB Backlit Keyboard, Up to 1.7mm Key-travel (Support N-Key)。"
+  },
+  {
+    "id": 24,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "連接埠",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 連接埠 規格為：Left Side:, 1 x DC in, 1 x RJ-45, 1 x HDMI 2.1, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™5 (support USB4, DisplayPort™ 2.1 and Power Delivery 3.0), Right Side:, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™4 (support USB4, DisplayPort™ 1.4 and Power Delivery 3.0), 1 x MicroSD (UHS-II), 1 x Audio Jack support mic / headphone combo。"
+  },
+  {
+    "id": 25,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "音效",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 音效 規格為：4x 2W speakers, Microphone, Dolby Atmos®, Smart Amp Technology。"
+  },
+  {
+    "id": 26,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "通訊",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 通訊 規格為：WIFI 7 (802.11be 2x2), LAN: 1G, Bluetooth v5.4。"
+  },
+  {
+    "id": 27,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "視訊鏡頭",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 視訊鏡頭 規格為：FHD (1080p) IR Webcam, Build-in array Microphone, Support Windows Hello Face Authentication。"
+  },
+  {
+    "id": 28,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "安全裝置",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 安全裝置 規格為：Firmware-based TPM, supports Intel® Platform Trust Technology (Intel® PTT)。"
+  },
+  {
+    "id": 29,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "電池",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 電池 規格為：Li Polymer 99Wh。"
+  },
+  {
+    "id": 30,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "變壓器",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 變壓器 規格為：330W AC Adapter。"
+  },
+  {
+    "id": 31,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "尺寸",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 尺寸 規格為：357 x 254 x 23~29.9 mm。"
+  },
+  {
+    "id": 32,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "重量",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 重量 規格為：~2.5 kg。"
+  },
+  {
+    "id": 33,
+    "model": "AORUS MASTER 16 BYH",
+    "key": "顏色",
+    "text": "技嘉筆電 AORUS MASTER 16 BYH 的 顏色 規格為：Dark Tide。"
+  },
+  {
+    "id": 34,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "作業系統",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 作業系統 規格為：Windows 11 Pro (GIGABYTE recommends Windows 11 Pro for business.), Windows 11 Home, UEFI Shell OS。"
+  },
+  {
+    "id": 35,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "中央處理器",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 中央處理器 規格為：Intel® Core™ Ultra 9 Processor 275HX (36MB cache, up to 5.4 GHz, 24 cores, 24 threads)。"
+  },
+  {
+    "id": 36,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "顯示晶片",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 顯示晶片 規格為：NVIDIA® GeForce RTX™ 5070 Ti Laptop GPU, 12GB GDDR7, 140W Maximum Graphics Power with Dynamic Boost*, AI Boost : 1962 MHz (1762 MHz Boost Clock + 200 MHz OC)*, *May vary by scenario。"
+  },
+  {
+    "id": 37,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "顯示器",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 顯示器 規格為：16\" 16:10, OLED WQXGA (2560x1600) 240Hz, 1ms, DCIP-3 100%, 500nits (peak), 1,000,000:1, NVIDIA® G-SYNC®, NVIDIA® Advanced Optimus, VESA DisplayHDR True Black 500, VESA ClearMR 10000, Pantone® Validated, TÜV Rheinland Low Blue Light, Dolby Vision®。"
+  },
+  {
+    "id": 38,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "記憶體",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 記憶體 規格為：Up to 64GB DDR5 5600MHz, * 2x SO-DIMM sockets for expansion。"
+  },
+  {
+    "id": 39,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "儲存裝置",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 儲存裝置 規格為：1x PCIe Gen5 M.2 slot, 1x PCIe Gen4x4 M.2 slots, Up to 4TB PCIe NVMe™ M.2 SSD, *The storage capacity may differ by country and region.。"
+  },
+  {
+    "id": 40,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "鍵盤種類",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 鍵盤種類 規格為：3-zone RGB Backlit Keyboard, Up to 1.7mm Key-travel (Support N-Key)。"
+  },
+  {
+    "id": 41,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "連接埠",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 連接埠 規格為：Left Side:, 1 x DC in, 1 x RJ-45, 1 x HDMI 2.1, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™5 (support USB4, DisplayPort™ 2.1 and Power Delivery 3.0), Right Side:, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™4 (support USB4, DisplayPort™ 1.4 and Power Delivery 3.0), 1 x MicroSD (UHS-II), 1 x Audio Jack support mic / headphone combo。"
+  },
+  {
+    "id": 42,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "音效",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 音效 規格為：4x 2W speakers, Microphone, Dolby Atmos®, Smart Amp Technology。"
+  },
+  {
+    "id": 43,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "通訊",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 通訊 規格為：WIFI 7 (802.11be 2x2), LAN: 1G, Bluetooth v5.4。"
+  },
+  {
+    "id": 44,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "視訊鏡頭",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 視訊鏡頭 規格為：FHD (1080p) IR Webcam, Build-in array Microphone, Support Windows Hello Face Authentication。"
+  },
+  {
+    "id": 45,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "安全裝置",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 安全裝置 規格為：Firmware-based TPM, supports Intel® Platform Trust Technology (Intel® PTT)。"
+  },
+  {
+    "id": 46,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "電池",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 電池 規格為：Li Polymer 99Wh。"
+  },
+  {
+    "id": 47,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "變壓器",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 變壓器 規格為：330W AC Adapter。"
+  },
+  {
+    "id": 48,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "尺寸",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 尺寸 規格為：357 x 254 x 23~29.9 mm。"
+  },
+  {
+    "id": 49,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "重量",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 重量 規格為：~2.5 kg。"
+  },
+  {
+    "id": 50,
+    "model": "AORUS MASTER 16 BXH",
+    "key": "顏色",
+    "text": "技嘉筆電 AORUS MASTER 16 BXH 的 顏色 規格為：Dark Tide。"
+  }
+]

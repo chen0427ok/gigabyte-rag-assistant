@@ -14,9 +14,6 @@ __pycache__/
 *.safetensors
 models/
 
-# Vector index (regeneratable)
-data/index/
-
 # Raw scraped data cache
 data/cache/
 

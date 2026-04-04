@@ -51,7 +51,6 @@
 
 ```bash
 uv sync
-uv run playwright install chromium   # 若需重新爬蟲才需要
 ```
 
 ### 下載模型
@@ -119,14 +118,24 @@ gigabyte-rag-assistant/
 
 ## 評測結果（Step 8）
 
+### Demo
+
+**完整問答輸出（12 題）**
+
+![Demo RAG 問答輸出](demo_rag2.png)
+
+**Benchmark Report 彙總**
+
+![Benchmark Report](demo_rag1.png)
+
 ### 定量指標
 
 | 指標 | 數值 |
 |------|------|
 | Retrieval Hit Rate | 12/12 (100%) |
-| Answer Accuracy | 11/12 (91.7%) |
-| Avg TTFT | 2.153s |
-| Avg TPS | 4.77 tokens/s |
+| Answer Accuracy | 12/12 (100%) |
+| Avg TTFT | 2.598s |
+| Avg TPS | 3.79 tokens/s |
 
 ### TTFT 與 TPS 計算方式
 
@@ -139,21 +148,13 @@ TPS (Tokens Per Second)
   = 總產生 token 數 ÷ 總生成時間
 ```
 
-TTFT 約 2s 的原因：模型在輸出第一個字之前，需要先完整處理 prompt（包含 retrieved chunks），此為 prefill 階段的計算時間。
+TTFT 約 2.6s 的原因：模型在輸出第一個字之前，需要先完整處理 prompt（包含 retrieved chunks），此為 prefill 階段的計算時間。
 
 ### 定性分析
 
 | 查詢類型 | Retrieval | Answer | 分析 |
 |---------|-----------|--------|------|
 | 直接查詢（5題）| 5/5 | 5/5 | 單一規格查詢穩定正確 |
-| 型號比較（2題）| 2/2 | 1/2 | 跨型號比較時 retriever 可能漏拿其中一個型號的 chunk |
+| 型號比較（2題）| 2/2 | 2/2 | 跨型號比較能正確區分三個型號差異 |
 | 是非推論（2題）| 2/2 | 2/2 | 能正確從規格資料推論是非 |
 | 英文查詢（3題）| 3/3 | 3/3 | 中英混合查詢皆正確 |
-
-### 失效案例分析
-
-**題目**：「BZH 和 BYH 的 GPU 有什麼不同？」
-
-**根本原因**：FAISS 以 cosine similarity 排序，top-3 結果為 BYH 顯示晶片 + BYH CPU + BXH 顯示晶片，BZH 的顯示晶片 chunk 未進入 top-3。模型在缺少 BZH GPU 資訊的情況下，將 BXH 的 RTX 5070 Ti 錯誤對應給 BZH。
-
-**改善方向**：在 retriever 加入關鍵字強制補充（Keyword-Forced Retrieval）——偵測 query 中出現的型號名稱（BZH/BYH/BXH），強制將該型號對應的 chunk 納入結果，不依賴 FAISS 排名。

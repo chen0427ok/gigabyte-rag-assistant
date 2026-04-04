@@ -62,9 +62,9 @@ BENCHMARK = [
     {
         "id": 6,
         "category": "型號比較",
-        "query": "BZH 和 BYH 的 GPU 有什麼不同？",
+        "query": "BZH 和 BXH 的 GPU 有什麼不同？",
         "expected_key": "顯示晶片",
-        "expected_hint": ["5090", "5080"],
+        "expected_hint": ["5090", "5070"],
     },
     {
         "id": 7,

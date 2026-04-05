@@ -187,3 +187,41 @@ TTFT 約 2.6s 的原因：模型在輸出第一個字之前，需要先完整處
 | 型號比較（2題）| 2/2 | 2/2 | 跨型號比較能正確區分三個型號差異 |
 | 是非推論（2題）| 2/2 | 2/2 | 能正確從規格資料推論是非 |
 | 英文查詢（3題）| 3/3 | 3/3 | 中英混合查詢皆正確 |
+
+---
+
+## 3B vs 7B 模型比較（feature/7b-model-eval）
+
+### 指令
+
+```bash
+uv run python src/evaluate.py --model 3b   # Qwen2.5-3B Q4_K_M（預設）
+uv run python src/evaluate.py --model 7b   # Qwen2.5-7B Q3_K_M
+```
+
+### 定量比較
+
+| 指標 | 3B Q4_K_M | 7B Q3_K_M |
+|------|-----------|-----------|
+| Retrieval Hit Rate | 12/12 (100%) | 12/12 (100%) |
+| Answer Accuracy | 12/12 (100%) | 11/12 (91.7%) |
+| Avg TTFT | 2.598s | ~10s |
+| Avg TPS | 3.79 tokens/s | ~0.65 tokens/s |
+
+### Q9 Dolby Vision 失敗分析（7B Q3_K_M 已知限制）
+
+**現象：** Q9「螢幕有支援 Dolby Vision 嗎？」中，Retrieval 正確命中（三個型號的 `顯示器` 欄位，score ≈ 0.55），chunks 內文明確包含「Dolby Vision®」，但 7B Q3_K_M 回答「資料中未找到相關規格。」
+
+**3B Q4_K_M 表現正常**，相同 chunks 下能正確回答。
+
+**可能原因：Q3_K_M 量化精度不足**
+
+每個顯示器規格文字約含 **13 個逗號分隔的屬性**，「Dolby Vision®」位於最末端：
+
+```
+16" 16:10, OLED WQXGA (2560x1600) 240Hz, 1ms, DCI-P3 100%, 500nits, 
+1,000,000:1, G-SYNC®, Advanced Optimus, DisplayHDR True Black 500, 
+ClearMR 10000, Pantone® Validated, TÜV Low Blue Light, Dolby Vision®
+```
+
+Q3_K_M 將權重壓縮至約 3.5 bits/param（vs Q4_K_M 的 4.5 bits）。在長序列末端，注意力機制所需的精度不足，導致模型對序列尾端的 token 產生理解偏差，誤判「資料中無相關資訊」。這是一個典型的**量化 + 長文本尾端衰減**問題，3B Q4_K_M 因量化精度較高反而表現更好。

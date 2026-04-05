@@ -16,6 +16,7 @@ import psutil
 from llama_cpp import Llama
 
 DEFAULT_MODEL_PATH = Path("models/qwen2.5-3b-instruct-q4_k_m.gguf")
+MODEL_7B_PATH      = Path("models/qwen2.5-7b-instruct-q3_k_m.gguf")
 
 SYSTEM_PROMPT = """你是一個專業的技嘉筆電產品規格小幫手。
 請根據以下提供的規格資料，用繁體中文回答使用者的問題。

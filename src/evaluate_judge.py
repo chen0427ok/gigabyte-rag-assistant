@@ -13,6 +13,8 @@ feature/llm-judge - Evaluate with Claude as judge
     uv run python src/evaluate_judge.py
     uv run python src/evaluate_judge.py --judge-mode score
     uv run python src/evaluate_judge.py --model 7b --judge-mode score
+    uv run python src/evaluate_judge.py --hybrid                        # Hybrid Retriever
+    uv run python src/evaluate_judge.py --hybrid --judge-mode score
 """
 
 import argparse
@@ -28,6 +30,7 @@ from rich.table import Table
 from rich import box
 
 from retriever import Retriever
+from hybrid_retriever import HybridRetriever
 from generator import Generator, DEFAULT_MODEL_PATH, MODEL_7B_PATH
 from evaluate import BENCHMARK, check_retrieval
 
@@ -141,7 +144,9 @@ def judge_score(
 
 # ── Main pipeline ──────────────────────────────────────────────────────────────
 
-def run_benchmark_with_judge(top_k: int = 3, model: str = "3b", judge_mode: str = "binary") -> None:
+def run_benchmark_with_judge(
+    top_k: int = 3, model: str = "3b", judge_mode: str = "binary", hybrid: bool = False
+) -> None:
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key or api_key == "Your claude api key":
         console.print("[bold red]錯誤：請在 .env 設定有效的 ANTHROPIC_API_KEY[/bold red]")
@@ -151,8 +156,9 @@ def run_benchmark_with_judge(top_k: int = 3, model: str = "3b", judge_mode: str 
     ground_truth = load_ground_truth(RAW_SPECS_PATH)
 
     model_path = MODEL_7B_PATH if model == "7b" else DEFAULT_MODEL_PATH
-    console.print(f"\n[bold cyan]載入 RAG Pipeline（model={model}, judge={judge_mode}）...[/bold cyan]")
-    retriever = Retriever(top_k=top_k)
+    retriever_label = "hybrid" if hybrid else "dense"
+    console.print(f"\n[bold cyan]載入 RAG Pipeline（model={model}, retriever={retriever_label}, judge={judge_mode}）...[/bold cyan]")
+    retriever = HybridRetriever(top_k=top_k) if hybrid else Retriever(top_k=top_k)
     generator = Generator(model_path=model_path)
     console.print("[bold green]開始評測！[/bold green]\n")
 
@@ -232,7 +238,7 @@ def run_benchmark_with_judge(top_k: int = 3, model: str = "3b", judge_mode: str 
         })
 
     _print_report(results, judge_mode)
-    _save_results(results, model, judge_mode)
+    _save_results(results, model, judge_mode, hybrid)
 
 
 # ── Report ─────────────────────────────────────────────────────────────────────
@@ -354,10 +360,11 @@ def _build_summary(results: list[dict], judge_mode: str) -> dict:
     return summary
 
 
-def _save_results(results: list[dict], model: str, judge_mode: str) -> None:
+def _save_results(results: list[dict], model: str, judge_mode: str, hybrid: bool = False) -> None:
     summary = _build_summary(results, judge_mode)
     output = {"summary": summary, "results": results}
-    out = Path(f"data/judge_results_{model}_{judge_mode}.json")
+    retriever = "hybrid" if hybrid else "semantic"
+    out = Path(f"data/judge_results_{model}_{retriever}_{judge_mode}.json")
     out.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     console.print(f"\n[dim]結果已儲存至 {out}[/dim]")
 
@@ -368,5 +375,9 @@ if __name__ == "__main__":
     parser.add_argument("--top-k",      type=int,                         default=3)
     parser.add_argument("--judge-mode", choices=["binary", "score"],      default="binary",
                         help="binary（預設）：correct/incorrect；score：三維度 1-5 分")
+    parser.add_argument("--hybrid",     action="store_true",
+                        help="使用 Hybrid Retriever（BM25 + FAISS + RRF）")
     args = parser.parse_args()
-    run_benchmark_with_judge(top_k=args.top_k, model=args.model, judge_mode=args.judge_mode)
+    run_benchmark_with_judge(
+        top_k=args.top_k, model=args.model, judge_mode=args.judge_mode, hybrid=args.hybrid
+    )

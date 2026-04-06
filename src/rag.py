@@ -11,18 +11,23 @@ Step 7 - Complete RAG Pipeline
 import argparse
 from rich.console import Console
 from rich.panel import Panel
-from rich.text import Text
 
 from retriever import Retriever
+from hybrid_retriever import HybridRetriever
 from generator import Generator
 
 console = Console()
 
 
 class RAGPipeline:
-    def __init__(self, top_k: int = 3):
+    def __init__(self, top_k: int = 3, hybrid: bool = False):
         console.print("[bold cyan]載入 Retriever...[/bold cyan]")
-        self.retriever = Retriever(top_k=top_k)
+        if hybrid:
+            self.retriever = HybridRetriever(top_k=top_k)
+            console.print("[dim]  模式：Hybrid（BM25 + FAISS + RRF）[/dim]")
+        else:
+            self.retriever = Retriever(top_k=top_k)
+            console.print("[dim]  模式：Dense（FAISS only）[/dim]")
         console.print("[bold cyan]載入 Generator...[/bold cyan]")
         self.generator = Generator()
         console.print("[bold green]RAG Pipeline 就緒！[/bold green]\n")
@@ -81,9 +86,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="GIGABYTE RAG Assistant")
     parser.add_argument("--query", type=str, default=None, help="單次查詢模式")
     parser.add_argument("--top-k", type=int, default=3, help="Retrieve 幾個 chunks（預設 3）")
+    parser.add_argument("--hybrid", action="store_true", help="使用 Hybrid Retriever（BM25 + FAISS + RRF）")
     args = parser.parse_args()
 
-    pipeline = RAGPipeline(top_k=args.top_k)
+    pipeline = RAGPipeline(top_k=args.top_k, hybrid=args.hybrid)
 
     if args.query:
         pipeline.ask(args.query)

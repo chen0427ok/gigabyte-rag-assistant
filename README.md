@@ -285,3 +285,94 @@ Q3_K_M 將權重壓縮至約 3.5 bits/param（vs Q4_K_M 的 4.5 bits）。在長
 | Binary 模式 | correct / incorrect + 一句理由 |
 | Score 模式 | faithfulness / correctness / conciseness 各 1-5 分，correctness ≥ 4 為 pass |
 | 輸出格式 | JSON 含 `summary`（彙總統計）與 `results`（每題明細） |
+
+---
+
+## Hybrid Search（feature/hybrid-search）
+
+### 為什麼需要 Hybrid Search？
+
+純語意搜尋（Dense Retrieval）使用 `bge-m3` 將文字 encode 成向量，透過 cosine similarity 找出最相近的 chunks。這種方式在語意相近的查詢下表現良好，但有一個關鍵弱點：**對於相似的精確字串無法區分**。
+
+以 Q13 為例：
+
+> **Query：** `BZH 和 BYH 的 GPU 有什麼不同？`
+
+在向量空間中，`BZH`、`BYH`、`BXH` 三個型號代碼的 embedding 非常接近（都是英文大寫三字母代碼，語意上幾乎相同）。因此 Dense Retrieval 的前三名全部來自同一個型號，導致缺少另一型號的規格 chunk，LLM 無從比較，最終回答錯誤：
+
+```
+Semantic top-3 for "BZH 和 BYH 的 GPU 有什麼不同？":
+  BYH | 顯示晶片  ← 只有 BYH，缺少 BZH
+  BYH | 中央處理器
+  BXH | 顯示晶片  ← 出現無關的 BXH
+```
+
+### 實作方式
+
+Hybrid Search 結合三個元件：
+
+**1. Dense Retrieval（FAISS + bge-m3）**
+與原有系統相同，負責捕捉語意相似度。
+
+**2. Sparse Retrieval（BM25）**
+使用 `rank_bm25` 套件對 chunk corpus 建立 BM25 索引，基於詞頻（TF-IDF 變體）做關鍵字匹配。BM25 對精確字串（如型號代碼 BZH/BYH）天然敏感，能區分相似型號。
+
+Tokenizer 特別處理英數混合 token：
+```python
+# USB3.2 → ['usb', '3', '2']，避免 'usb3.2' 無法匹配 query 的 'usb'
+text = re.sub(r"[^\w\s]", " ", text)
+sub_tokens = re.findall(r"[a-zA-Z]+|[0-9]+(?:\.[0-9]+)?", part)
+```
+
+**3. RRF（Reciprocal Rank Fusion）**
+合併 dense 和 sparse 兩組排名：
+
+```
+RRF score = 1 / (60 + rank_dense) + 1 / (60 + rank_sparse)
+```
+
+k=60 為原始論文建議值，防止排名靠前的 outlier 過度主導結果。
+
+**4. Model-aware 分配**
+針對比較型 query（如「BZH 和 BYH 的 GPU 有什麼不同？」），偵測 query 中提到的型號代碼（BZH/BYH/BXH），確保每個型號至少有一個 chunk 進入最終 top-k：
+
+```python
+mentioned_models = _detect_models(query)  # ['BZH', 'BYH']
+# 每個型號先選 RRF 分最高的 chunk，再用全域排名填滿剩餘 slot
+```
+
+### 指令
+
+```bash
+uv run python src/evaluate.py --hybrid
+uv run python src/evaluate_judge.py --hybrid
+uv run python src/evaluate_judge.py --hybrid --judge-mode score
+uv run python src/rag.py --hybrid --query "BZH 和 BYH 的 GPU 有什麼不同？"
+```
+
+### 評測結果（3B Q4_K_M，Binary Judge）
+
+| 指標 | Semantic（Dense only） | Hybrid（BM25 + FAISS + RRF） |
+|------|----------------------|------------------------------|
+| Retrieval Hit Rate | 13/13 (100%) | 13/13 (100%) |
+| Answer Pass Rate | 10/13 (76.9%) | 12/13 (92.3%) |
+
+Hybrid 在不影響其他題目的前提下，修正了以下兩題：
+
+**Q6：BZH 和 BXH 的 GPU 有什麼不同？**
+
+| | Semantic | Hybrid |
+|---|---|---|
+| Retrieved chunks | BXH 顯示晶片、BXH CPU、**BZH 顯示晶片（第3）** | **BZH 顯示晶片**、**BXH 顯示晶片**、BYH 顯示晶片 |
+| Answer Pass | ✗（遺漏功耗與時脈差異） | ✓ |
+
+Semantic 雖然 retrieval_hit=True（BZH 顯示晶片排第3），但 top-3 中夾雜了 BXH CPU，使 LLM 無法完整比較兩者差異。Hybrid 透過 model-aware 分配，確保 BZH 和 BXH 的顯示晶片都進入 top-2，LLM 得到完整資訊。
+
+**Q13：BZH 和 BYH 的 GPU 有什麼不同？**
+
+| | Semantic | Hybrid |
+|---|---|---|
+| Retrieved chunks | BYH 顯示晶片、BYH CPU、BXH 顯示晶片 | **BZH 顯示晶片**、**BYH 顯示晶片**、BXH 顯示晶片 |
+| Answer Pass | ✗（將 BZH 誤答為 RTX 5070 Ti） | ✓（正確：BZH=RTX 5090，BYH=RTX 5080） |
+
+Dense Retrieval 完全沒有取到 BZH 的 chunk，LLM 只能根據 BYH/BXH 的資料推斷，導致型號混淆。BM25 能精確匹配 query 中的 `BZH` 字串，讓 BZH 顯示晶片進入結果。

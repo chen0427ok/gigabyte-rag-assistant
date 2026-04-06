@@ -16,6 +16,7 @@ from rich.table import Table
 from rich import box
 
 from retriever import Retriever
+from hybrid_retriever import HybridRetriever
 from generator import Generator, DEFAULT_MODEL_PATH, MODEL_7B_PATH
 
 console = Console()
@@ -108,6 +109,13 @@ BENCHMARK = [
         "expected_key": "顯示晶片",
         "expected_hint": ["5070", "RTX"],
     },
+    {
+        "id": 13,
+        "category": "型號比較",
+        "query": "BZH 和 BYH 的 GPU 有什麼不同？",
+        "expected_key": "顯示晶片",
+        "expected_hint": ["5090", "5080"],  # dense search 已知會漏掉 BZH，hybrid 應能修正
+    },
 ]
 
 
@@ -122,10 +130,11 @@ def check_answer(answer: str, hints: list[str]) -> bool:
     return all(h.lower() in answer_lower for h in hints)
 
 
-def run_benchmark(top_k: int = 3, model: str = "3b") -> None:
+def run_benchmark(top_k: int = 3, model: str = "3b", hybrid: bool = False) -> None:
     model_path = MODEL_7B_PATH if model == "7b" else DEFAULT_MODEL_PATH
-    console.print(f"\n[bold cyan]載入 RAG Pipeline（model={model}）...[/bold cyan]")
-    retriever = Retriever(top_k=top_k)
+    retriever_label = "hybrid" if hybrid else "dense"
+    console.print(f"\n[bold cyan]載入 RAG Pipeline（model={model}, retriever={retriever_label}）...[/bold cyan]")
+    retriever = HybridRetriever(top_k=top_k) if hybrid else Retriever(top_k=top_k)
     generator = Generator(model_path=model_path)
     console.print("[bold green]開始評測！[/bold green]\n")
 
@@ -170,7 +179,7 @@ def run_benchmark(top_k: int = 3, model: str = "3b") -> None:
         })
 
     _print_report(results)
-    _save_results(results, model)
+    _save_results(results, model, hybrid)
 
 
 def _print_report(results: list[dict]) -> None:
@@ -243,8 +252,9 @@ def _print_report(results: list[dict]) -> None:
         )
 
 
-def _save_results(results: list[dict], model: str) -> None:
-    out = Path(f"data/eval_results_{model}.json")
+def _save_results(results: list[dict], model: str, hybrid: bool = False) -> None:
+    retriever = "hybrid" if hybrid else "semantic"
+    out = Path(f"data/eval_results_{model}_{retriever}.json")
     out.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
     console.print(f"\n[dim]結果已儲存至 {out}[/dim]")
 
@@ -254,5 +264,7 @@ if __name__ == "__main__":
     parser.add_argument("--model", choices=["3b", "7b"], default="3b",
                         help="選擇模型：3b（預設）或 7b")
     parser.add_argument("--top-k", type=int, default=3)
+    parser.add_argument("--hybrid", action="store_true",
+                        help="使用 Hybrid Retriever（BM25 + FAISS + RRF）")
     args = parser.parse_args()
-    run_benchmark(top_k=args.top_k, model=args.model)
+    run_benchmark(top_k=args.top_k, model=args.model, hybrid=args.hybrid)

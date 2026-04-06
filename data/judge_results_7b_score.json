@@ -1,0 +1,688 @@
+{
+  "summary": {
+    "total_questions": 12,
+    "judge_mode": "score",
+    "retrieval_hit_rate": 100.0,
+    "retrieval_hit_count": 12,
+    "answer_pass_rate": 83.3,
+    "answer_pass_count": 10,
+    "avg_ttft_sec": 3.587,
+    "avg_tps": 3.09,
+    "avg_scores": {
+      "faithfulness": 4.67,
+      "correctness": 4.33,
+      "conciseness": 4.83
+    }
+  },
+  "results": [
+    {
+      "id": 1,
+      "category": "直接查詢",
+      "query": "BZH 的顯示晶片是什麼？",
+      "expected_key": "顯示晶片",
+      "expected_hint": [
+        "5090",
+        "RTX"
+      ],
+      "retrieval_hit": true,
+      "answer_pass": true,
+      "judge_reason": "對照 ground truth，BZH 的顯示晶片確實為 RTX 5090 Laptop GPU with 24GB GDDR7 and 175W，答案正確且完整。",
+      "scores": {
+        "faithfulness": {
+          "score": 5,
+          "reason": "答案完全基於 retrieved context 第一條資料，未添加或捏造任何資訊。"
+        },
+        "correctness": {
+          "score": 5,
+          "reason": "對照 ground truth，BZH 的顯示晶片確實為 RTX 5090 Laptop GPU with 24GB GDDR7 and 175W，答案正確且完整。"
+        },
+        "conciseness": {
+          "score": 5,
+          "reason": "答案簡潔直接，列出核心規格資訊，無冗餘內容。"
+        }
+      },
+      "answer": "BZH 的顯示晶片規格為：NVIDIA® GeForce RTX™ 5090 Laptop GPU, 24GB GDDR7, 175W Maximum Graphics Power with Dynamic Boost*。",
+      "ttft_sec": 4.23,
+      "tps": 3.45,
+      "total_tokens": 46,
+      "total_sec": 13.336,
+      "mem_after_gen_gb": 3.69,
+      "retrieved_chunks": [
+        {
+          "id": 2,
+          "model": "AORUS MASTER 16 BZH",
+          "key": "顯示晶片",
+          "text": "技嘉筆電 AORUS MASTER 16 BZH 的 顯示晶片 規格為：NVIDIA® GeForce RTX™ 5090 Laptop GPU, 24GB GDDR7, 175W Maximum Graphics Power with Dynamic Boost*, AI Boost : 1797 MHz (1597 MHz Boost Clock + 200 MHz OC)*, *May vary by scenario。",
+          "score": 0.4858
+        },
+        {
+          "id": 36,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "顯示晶片",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 顯示晶片 規格為：NVIDIA® GeForce RTX™ 5070 Ti Laptop GPU, 12GB GDDR7, 140W Maximum Graphics Power with Dynamic Boost*, AI Boost : 1962 MHz (1762 MHz Boost Clock + 200 MHz OC)*, *May vary by scenario。",
+          "score": 0.4819
+        },
+        {
+          "id": 3,
+          "model": "AORUS MASTER 16 BZH",
+          "key": "顯示器",
+          "text": "技嘉筆電 AORUS MASTER 16 BZH 的 顯示器 規格為：16\" 16:10, OLED WQXGA (2560x1600) 240Hz, 1ms, DCIP-3 100%, 500nits (peak), 1,000,000:1, NVIDIA® G-SYNC®, NVIDIA® Advanced Optimus, VESA DisplayHDR True Black 500, VESA ClearMR 10000, Pantone® Validated, TÜV Rheinland Low Blue Light, Dolby Vision®。",
+          "score": 0.4796
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "直接查詢",
+      "query": "這台筆電的記憶體最大是多少？",
+      "expected_key": "記憶體",
+      "expected_hint": [
+        "64GB"
+      ],
+      "retrieval_hit": true,
+      "answer_pass": true,
+      "judge_reason": "答案與 ground truth 完全一致，三款機型的最大記憶體規格均為 Up to 64GB DDR5 5600MHz。",
+      "scores": {
+        "faithfulness": {
+          "score": 5,
+          "reason": "答案完全基於 retrieved context 中的記憶體規格，未涉及 context 之外的資訊。"
+        },
+        "correctness": {
+          "score": 5,
+          "reason": "答案與 ground truth 完全一致，三款機型的最大記憶體規格均為 Up to 64GB DDR5 5600MHz。"
+        },
+        "conciseness": {
+          "score": 5,
+          "reason": "答案簡潔直接，僅陳述必要資訊，未包含冗餘內容。"
+        }
+      },
+      "answer": "這台筆電的記憶體最大為 64GB。",
+      "ttft_sec": 1.703,
+      "tps": 3.37,
+      "total_tokens": 15,
+      "total_sec": 4.454,
+      "mem_after_gen_gb": 3.38,
+      "retrieved_chunks": [
+        {
+          "id": 21,
+          "model": "AORUS MASTER 16 BYH",
+          "key": "記憶體",
+          "text": "技嘉筆電 AORUS MASTER 16 BYH 的 記憶體 規格為：Up to 64GB DDR5 5600MHz, * 2x SO-DIMM sockets for expansion。",
+          "score": 0.639
+        },
+        {
+          "id": 38,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "記憶體",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 記憶體 規格為：Up to 64GB DDR5 5600MHz, * 2x SO-DIMM sockets for expansion。",
+          "score": 0.6335
+        },
+        {
+          "id": 4,
+          "model": "AORUS MASTER 16 BZH",
+          "key": "記憶體",
+          "text": "技嘉筆電 AORUS MASTER 16 BZH 的 記憶體 規格為：Up to 64GB DDR5 5600MHz, * 2x SO-DIMM sockets for expansion。",
+          "score": 0.6332
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "直接查詢",
+      "query": "螢幕解析度是多少？",
+      "expected_key": "顯示器",
+      "expected_hint": [
+        "2560",
+        "1600"
+      ],
+      "retrieval_hit": true,
+      "answer_pass": true,
+      "judge_reason": "解析度 2560x1600 (WQXGA) 與 ground truth 中三款筆電的規格完全相符。",
+      "scores": {
+        "faithfulness": {
+          "score": 5,
+          "reason": "答案完全基於 retrieved context 中的顯示器規格資訊，未涉及任何幻覺內容。"
+        },
+        "correctness": {
+          "score": 5,
+          "reason": "解析度 2560x1600 (WQXGA) 與 ground truth 中三款筆電的規格完全相符。"
+        },
+        "conciseness": {
+          "score": 5,
+          "reason": "直接回答問題，無冗餘描述，簡潔有力。"
+        }
+      },
+      "answer": "螢幕解析度為 2560x1600。",
+      "ttft_sec": 5.425,
+      "tps": 1.77,
+      "total_tokens": 16,
+      "total_sec": 9.023,
+      "mem_after_gen_gb": 3.23,
+      "retrieved_chunks": [
+        {
+          "id": 20,
+          "model": "AORUS MASTER 16 BYH",
+          "key": "顯示器",
+          "text": "技嘉筆電 AORUS MASTER 16 BYH 的 顯示器 規格為：16\" 16:10, OLED WQXGA (2560x1600) 240Hz, 1ms, DCIP-3 100%, 500nits (peak), 1,000,000:1, NVIDIA® G-SYNC®, NVIDIA® Advanced Optimus, VESA DisplayHDR True Black 500, VESA ClearMR 10000, Pantone® Validated, TÜV Rheinland Low Blue Light, Dolby Vision®。",
+          "score": 0.607
+        },
+        {
+          "id": 3,
+          "model": "AORUS MASTER 16 BZH",
+          "key": "顯示器",
+          "text": "技嘉筆電 AORUS MASTER 16 BZH 的 顯示器 規格為：16\" 16:10, OLED WQXGA (2560x1600) 240Hz, 1ms, DCIP-3 100%, 500nits (peak), 1,000,000:1, NVIDIA® G-SYNC®, NVIDIA® Advanced Optimus, VESA DisplayHDR True Black 500, VESA ClearMR 10000, Pantone® Validated, TÜV Rheinland Low Blue Light, Dolby Vision®。",
+          "score": 0.6003
+        },
+        {
+          "id": 37,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "顯示器",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 顯示器 規格為：16\" 16:10, OLED WQXGA (2560x1600) 240Hz, 1ms, DCIP-3 100%, 500nits (peak), 1,000,000:1, NVIDIA® G-SYNC®, NVIDIA® Advanced Optimus, VESA DisplayHDR True Black 500, VESA ClearMR 10000, Pantone® Validated, TÜV Rheinland Low Blue Light, Dolby Vision®。",
+          "score": 0.5991
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "直接查詢",
+      "query": "電池容量是多少？",
+      "expected_key": "電池",
+      "expected_hint": [
+        "99Wh",
+        "99"
+      ],
+      "retrieval_hit": true,
+      "answer_pass": true,
+      "judge_reason": "答案與 ground truth 中三款筆電的電池規格完全相符，均為 Li Polymer 99Wh。",
+      "scores": {
+        "faithfulness": {
+          "score": 5,
+          "reason": "答案完全基於 retrieved context 中提供的電池規格資訊，未添加任何 context 之外的內容。"
+        },
+        "correctness": {
+          "score": 5,
+          "reason": "答案與 ground truth 中三款筆電的電池規格完全相符，均為 Li Polymer 99Wh。"
+        },
+        "conciseness": {
+          "score": 5,
+          "reason": "答案簡潔明確，直接回答了使用者的問題，無冗餘資訊。"
+        }
+      },
+      "answer": "電池容量為 99Wh。",
+      "ttft_sec": 1.063,
+      "tps": 5.11,
+      "total_tokens": 9,
+      "total_sec": 1.76,
+      "mem_after_gen_gb": 3.25,
+      "retrieved_chunks": [
+        {
+          "id": 46,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "電池",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 電池 規格為：Li Polymer 99Wh。",
+          "score": 0.5972
+        },
+        {
+          "id": 12,
+          "model": "AORUS MASTER 16 BZH",
+          "key": "電池",
+          "text": "技嘉筆電 AORUS MASTER 16 BZH 的 電池 規格為：Li Polymer 99Wh。",
+          "score": 0.5939
+        },
+        {
+          "id": 29,
+          "model": "AORUS MASTER 16 BYH",
+          "key": "電池",
+          "text": "技嘉筆電 AORUS MASTER 16 BYH 的 電池 規格為：Li Polymer 99Wh。",
+          "score": 0.5929
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "直接查詢",
+      "query": "鍵盤有幾個 RGB 燈光區域？",
+      "expected_key": "鍵盤種類",
+      "expected_hint": [
+        "3"
+      ],
+      "retrieval_hit": true,
+      "answer_pass": true,
+      "judge_reason": "答案與 ground truth 完全一致，三個型號（BXH、BYH、BZH）的鍵盤規格都明確記載為『3-zone RGB Backlit Keyboard』。",
+      "scores": {
+        "faithfulness": {
+          "score": 5,
+          "reason": "答案直接引用 retrieved context 中的『3-zone RGB Backlit Keyboard』，完全基於提供的資訊，無幻覺。"
+        },
+        "correctness": {
+          "score": 5,
+          "reason": "答案與 ground truth 完全一致，三個型號（BXH、BYH、BZH）的鍵盤規格都明確記載為『3-zone RGB Backlit Keyboard』。"
+        },
+        "conciseness": {
+          "score": 5,
+          "reason": "回答簡潔明確，直接給出數字答案，無冗餘資訊。"
+        }
+      },
+      "answer": "鍵盤有三個 RGB 燈光區域。",
+      "ttft_sec": 1.399,
+      "tps": 2.55,
+      "total_tokens": 9,
+      "total_sec": 3.524,
+      "mem_after_gen_gb": 3.24,
+      "retrieved_chunks": [
+        {
+          "id": 40,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "鍵盤種類",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 鍵盤種類 規格為：3-zone RGB Backlit Keyboard, Up to 1.7mm Key-travel (Support N-Key)。",
+          "score": 0.5865
+        },
+        {
+          "id": 6,
+          "model": "AORUS MASTER 16 BZH",
+          "key": "鍵盤種類",
+          "text": "技嘉筆電 AORUS MASTER 16 BZH 的 鍵盤種類 規格為：3-zone RGB Backlit Keyboard, Up to 1.7mm Key-travel (Support N-Key)。",
+          "score": 0.576
+        },
+        {
+          "id": 23,
+          "model": "AORUS MASTER 16 BYH",
+          "key": "鍵盤種類",
+          "text": "技嘉筆電 AORUS MASTER 16 BYH 的 鍵盤種類 規格為：3-zone RGB Backlit Keyboard, Up to 1.7mm Key-travel (Support N-Key)。",
+          "score": 0.5742
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "型號比較",
+      "query": "BZH 和 BXH 的 GPU 有什麼不同？",
+      "expected_key": "顯示晶片",
+      "expected_hint": [
+        "5090",
+        "5070"
+      ],
+      "retrieval_hit": true,
+      "answer_pass": true,
+      "judge_reason": "與 ground truth 完全一致，正確列舉了 GPU 型號、記憶體容量和最大功率三項主要差異。",
+      "scores": {
+        "faithfulness": {
+          "score": 5,
+          "reason": "回答完全基於 retrieved context 提供的資訊，未添加無根據內容。"
+        },
+        "correctness": {
+          "score": 5,
+          "reason": "與 ground truth 完全一致，正確列舉了 GPU 型號、記憶體容量和最大功率三項主要差異。"
+        },
+        "conciseness": {
+          "score": 5,
+          "reason": "用簡潔的列點格式呈現核心差異，無冗長敘述，資訊密度高。"
+        }
+      },
+      "answer": "BZH 和 BXH 的 GPU 主要不同在於：\n\n- BZH 配備 NVIDIA® GeForce RTX™ 5090 Laptop GPU，記憶體為 24GB GDDR7。\n- BXH 配備 NVIDIA® GeForce RTX™ 5070 Ti Laptop GPU，記憶體為 12GB GDDR7。\n\n此外，BZH 的最大圖形功率為 175W，而 BXH 則為 140W。",
+      "ttft_sec": 2.671,
+      "tps": 4.26,
+      "total_tokens": 103,
+      "total_sec": 24.167,
+      "mem_after_gen_gb": 3.16,
+      "retrieved_chunks": [
+        {
+          "id": 36,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "顯示晶片",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 顯示晶片 規格為：NVIDIA® GeForce RTX™ 5070 Ti Laptop GPU, 12GB GDDR7, 140W Maximum Graphics Power with Dynamic Boost*, AI Boost : 1962 MHz (1762 MHz Boost Clock + 200 MHz OC)*, *May vary by scenario。",
+          "score": 0.513
+        },
+        {
+          "id": 35,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "中央處理器",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 中央處理器 規格為：Intel® Core™ Ultra 9 Processor 275HX (36MB cache, up to 5.4 GHz, 24 cores, 24 threads)。",
+          "score": 0.4972
+        },
+        {
+          "id": 2,
+          "model": "AORUS MASTER 16 BZH",
+          "key": "顯示晶片",
+          "text": "技嘉筆電 AORUS MASTER 16 BZH 的 顯示晶片 規格為：NVIDIA® GeForce RTX™ 5090 Laptop GPU, 24GB GDDR7, 175W Maximum Graphics Power with Dynamic Boost*, AI Boost : 1797 MHz (1597 MHz Boost Clock + 200 MHz OC)*, *May vary by scenario。",
+          "score": 0.4878
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "category": "型號比較",
+      "query": "哪個型號的顯示晶片最強？",
+      "expected_key": "顯示晶片",
+      "expected_hint": [
+        "BZH",
+        "5090"
+      ],
+      "retrieval_hit": true,
+      "answer_pass": true,
+      "judge_reason": "對照 ground truth，AORUS MASTER 16 BZH 確實搭載 RTX 5090（最高階GPU），24GB GDDR7，且在三個型號中效能最強，回答完全正確。",
+      "scores": {
+        "faithfulness": {
+          "score": 5,
+          "reason": "答案完全基於 retrieved context 中關於 BZH 型號的顯示晶片規格資訊，未添加 context 外的內容。"
+        },
+        "correctness": {
+          "score": 5,
+          "reason": "對照 ground truth，AORUS MASTER 16 BZH 確實搭載 RTX 5090（最高階GPU），24GB GDDR7，且在三個型號中效能最強，回答完全正確。"
+        },
+        "conciseness": {
+          "score": 5,
+          "reason": "答案簡潔明扼，直接指出最強型號及其核心顯示晶片規格，無冗餘資訊。"
+        }
+      },
+      "answer": "技嘉筆電 AORUS MASTER 16 BZH 的顯示晶片最強，其規格為 NVIDIA® GeForce RTX™ 5090 Laptop GPU, 24GB GDDR7。",
+      "ttft_sec": 1.75,
+      "tps": 4.21,
+      "total_tokens": 46,
+      "total_sec": 10.915,
+      "mem_after_gen_gb": 3.03,
+      "retrieved_chunks": [
+        {
+          "id": 36,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "顯示晶片",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 顯示晶片 規格為：NVIDIA® GeForce RTX™ 5070 Ti Laptop GPU, 12GB GDDR7, 140W Maximum Graphics Power with Dynamic Boost*, AI Boost : 1962 MHz (1762 MHz Boost Clock + 200 MHz OC)*, *May vary by scenario。",
+          "score": 0.5455
+        },
+        {
+          "id": 2,
+          "model": "AORUS MASTER 16 BZH",
+          "key": "顯示晶片",
+          "text": "技嘉筆電 AORUS MASTER 16 BZH 的 顯示晶片 規格為：NVIDIA® GeForce RTX™ 5090 Laptop GPU, 24GB GDDR7, 175W Maximum Graphics Power with Dynamic Boost*, AI Boost : 1797 MHz (1597 MHz Boost Clock + 200 MHz OC)*, *May vary by scenario。",
+          "score": 0.5411
+        },
+        {
+          "id": 19,
+          "model": "AORUS MASTER 16 BYH",
+          "key": "顯示晶片",
+          "text": "技嘉筆電 AORUS MASTER 16 BYH 的 顯示晶片 規格為：NVIDIA® GeForce RTX™ 5080 Laptop GPU, 16GB GDDR7, 175W Maximum Graphics Power with Dynamic Boost*, AI Boost : 1902 MHz (1702 MHz Boost Clock + 200 MHz OC)*, *May vary by scenario。",
+          "score": 0.5362
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "是非推論",
+      "query": "這台筆電有支援 Thunderbolt 5 嗎？",
+      "expected_key": "連接埠",
+      "expected_hint": [
+        "是",
+        "支援"
+      ],
+      "retrieval_hit": true,
+      "answer_pass": true,
+      "judge_reason": "對照 ground truth，回答完全正確，三款 AORUS MASTER 16 型號（BZH、BYH、BXH）確實都在左側配備 1 x Type-C with Thunderbolt™5，且功能描述也準確無誤。",
+      "scores": {
+        "faithfulness": {
+          "score": 5,
+          "reason": "回答完全基於 retrieved context，準確引用了三款筆電都支援 Thunderbolt™5 的規格資訊，無任何捏造。"
+        },
+        "correctness": {
+          "score": 5,
+          "reason": "對照 ground truth，回答完全正確，三款 AORUS MASTER 16 型號（BZH、BYH、BXH）確實都在左側配備 1 x Type-C with Thunderbolt™5，且功能描述也準確無誤。"
+        },
+        "conciseness": {
+          "score": 4,
+          "reason": "回答簡潔清晰，直接確認支援並列舉三款型號及其功能，雖然「具體來說」稍顯冗餘，但整體仍保持良好的精簡度。"
+        }
+      },
+      "answer": "是的，這台筆電支援 Thunderbolt 5。具體來說，技嘉筆電 AORUS MASTER 16 BZH、BYH 和 BXH 型號都有一個 Type-C 连接埠支持 Thunderbolt™5（支援 USB4, DisplayPort™ 2.1 和 Power Delivery 3.0）。",
+      "ttft_sec": 5.881,
+      "tps": 3.43,
+      "total_tokens": 71,
+      "total_sec": 20.671,
+      "mem_after_gen_gb": 2.95,
+      "retrieved_chunks": [
+        {
+          "id": 7,
+          "model": "AORUS MASTER 16 BZH",
+          "key": "連接埠",
+          "text": "技嘉筆電 AORUS MASTER 16 BZH 的 連接埠 規格為：Left Side:, 1 x DC in, 1 x RJ-45, 1 x HDMI 2.1, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™5 (support USB4, DisplayPort™ 2.1 and Power Delivery 3.0), Right Side:, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™4 (support USB4, DisplayPort™ 1.4 and Power Delivery 3.0), 1 x MicroSD (UHS-II), 1 x Audio Jack support mic / headphone combo。",
+          "score": 0.5766
+        },
+        {
+          "id": 24,
+          "model": "AORUS MASTER 16 BYH",
+          "key": "連接埠",
+          "text": "技嘉筆電 AORUS MASTER 16 BYH 的 連接埠 規格為：Left Side:, 1 x DC in, 1 x RJ-45, 1 x HDMI 2.1, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™5 (support USB4, DisplayPort™ 2.1 and Power Delivery 3.0), Right Side:, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™4 (support USB4, DisplayPort™ 1.4 and Power Delivery 3.0), 1 x MicroSD (UHS-II), 1 x Audio Jack support mic / headphone combo。",
+          "score": 0.5762
+        },
+        {
+          "id": 41,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "連接埠",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 連接埠 規格為：Left Side:, 1 x DC in, 1 x RJ-45, 1 x HDMI 2.1, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™5 (support USB4, DisplayPort™ 2.1 and Power Delivery 3.0), Right Side:, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™4 (support USB4, DisplayPort™ 1.4 and Power Delivery 3.0), 1 x MicroSD (UHS-II), 1 x Audio Jack support mic / headphone combo。",
+          "score": 0.572
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "是非推論",
+      "query": "螢幕有支援 Dolby Vision 嗎？",
+      "expected_key": "顯示器",
+      "expected_hint": [
+        "Dolby"
+      ],
+      "retrieval_hit": true,
+      "answer_pass": false,
+      "judge_reason": "Retrieved Context 和 Ground Truth 都明確列出「Dolby Vision®」，系統回答「未找到相關規格」是完全錯誤的。",
+      "scores": {
+        "faithfulness": {
+          "score": 5,
+          "reason": "系統未輸出任何內容，因此無幻覺問題。"
+        },
+        "correctness": {
+          "score": 1,
+          "reason": "Retrieved Context 和 Ground Truth 都明確列出「Dolby Vision®」，系統回答「未找到相關規格」是完全錯誤的。"
+        },
+        "conciseness": {
+          "score": 5,
+          "reason": "回答簡潔，但因為是錯誤的回答，簡潔度無法彌補正確性缺陷。"
+        }
+      },
+      "answer": "資料中未找到相關規格。",
+      "ttft_sec": 4.789,
+      "tps": 1.26,
+      "total_tokens": 8,
+      "total_sec": 6.335,
+      "mem_after_gen_gb": 2.89,
+      "retrieved_chunks": [
+        {
+          "id": 20,
+          "model": "AORUS MASTER 16 BYH",
+          "key": "顯示器",
+          "text": "技嘉筆電 AORUS MASTER 16 BYH 的 顯示器 規格為：16\" 16:10, OLED WQXGA (2560x1600) 240Hz, 1ms, DCIP-3 100%, 500nits (peak), 1,000,000:1, NVIDIA® G-SYNC®, NVIDIA® Advanced Optimus, VESA DisplayHDR True Black 500, VESA ClearMR 10000, Pantone® Validated, TÜV Rheinland Low Blue Light, Dolby Vision®。",
+          "score": 0.5563
+        },
+        {
+          "id": 37,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "顯示器",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 顯示器 規格為：16\" 16:10, OLED WQXGA (2560x1600) 240Hz, 1ms, DCIP-3 100%, 500nits (peak), 1,000,000:1, NVIDIA® G-SYNC®, NVIDIA® Advanced Optimus, VESA DisplayHDR True Black 500, VESA ClearMR 10000, Pantone® Validated, TÜV Rheinland Low Blue Light, Dolby Vision®。",
+          "score": 0.5558
+        },
+        {
+          "id": 3,
+          "model": "AORUS MASTER 16 BZH",
+          "key": "顯示器",
+          "text": "技嘉筆電 AORUS MASTER 16 BZH 的 顯示器 規格為：16\" 16:10, OLED WQXGA (2560x1600) 240Hz, 1ms, DCIP-3 100%, 500nits (peak), 1,000,000:1, NVIDIA® G-SYNC®, NVIDIA® Advanced Optimus, VESA DisplayHDR True Black 500, VESA ClearMR 10000, Pantone® Validated, TÜV Rheinland Low Blue Light, Dolby Vision®。",
+          "score": 0.5527
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "category": "英文查詢",
+      "query": "What is the RAM capacity?",
+      "expected_key": "記憶體",
+      "expected_hint": [
+        "64GB"
+      ],
+      "retrieval_hit": true,
+      "answer_pass": true,
+      "judge_reason": "答案與 ground truth 完全一致，三款機型的記憶體規格都是 Up to 64GB DDR5 5600MHz。",
+      "scores": {
+        "faithfulness": {
+          "score": 5,
+          "reason": "答案完全基於 retrieved context 中的資訊，未添加任何 context 以外的內容。"
+        },
+        "correctness": {
+          "score": 5,
+          "reason": "答案與 ground truth 完全一致，三款機型的記憶體規格都是 Up to 64GB DDR5 5600MHz。"
+        },
+        "conciseness": {
+          "score": 5,
+          "reason": "答案極其精簡，直接回答了 RAM 容量的核心資訊，無冗餘表述。"
+        }
+      },
+      "answer": "記憶體容量為最高 64GB。",
+      "ttft_sec": 1.706,
+      "tps": 2.92,
+      "total_tokens": 11,
+      "total_sec": 3.763,
+      "mem_after_gen_gb": 2.88,
+      "retrieved_chunks": [
+        {
+          "id": 4,
+          "model": "AORUS MASTER 16 BZH",
+          "key": "記憶體",
+          "text": "技嘉筆電 AORUS MASTER 16 BZH 的 記憶體 規格為：Up to 64GB DDR5 5600MHz, * 2x SO-DIMM sockets for expansion。",
+          "score": 0.5262
+        },
+        {
+          "id": 38,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "記憶體",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 記憶體 規格為：Up to 64GB DDR5 5600MHz, * 2x SO-DIMM sockets for expansion。",
+          "score": 0.5234
+        },
+        {
+          "id": 21,
+          "model": "AORUS MASTER 16 BYH",
+          "key": "記憶體",
+          "text": "技嘉筆電 AORUS MASTER 16 BYH 的 記憶體 規格為：Up to 64GB DDR5 5600MHz, * 2x SO-DIMM sockets for expansion。",
+          "score": 0.5202
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "category": "英文查詢",
+      "query": "How many USB ports does this laptop have?",
+      "expected_key": "連接埠",
+      "expected_hint": [
+        "USB",
+        "Type-A",
+        "Type-C"
+      ],
+      "retrieval_hit": true,
+      "answer_pass": false,
+      "judge_reason": "答案完全錯誤，實際 USB ports 只有 2 個 Type-A 和 2 個 Type-C (共 4 個)，系統回答的 '5 個 Type-A' 和 '7 個總數' 都不符合官方規格。",
+      "scores": {
+        "faithfulness": {
+          "score": 1,
+          "reason": "系統捏造了 'USB Type-A port 有 5 個' 的資訊，retrieved context 和 ground truth 中明確只有 2 個 Type-A ports (各一個在左右側)。"
+        },
+        "correctness": {
+          "score": 1,
+          "reason": "答案完全錯誤，實際 USB ports 只有 2 個 Type-A 和 2 個 Type-C (共 4 個)，系統回答的 '5 個 Type-A' 和 '7 個總數' 都不符合官方規格。"
+        },
+        "conciseness": {
+          "score": 4,
+          "reason": "回答本身結構簡潔，但因內容完全錯誤而無實用價值。"
+        }
+      },
+      "answer": "這款筆電共有 5 個 USB Type-A port 和 2 個 Thunderbolt 3/Thunderbolt 4 Type-C port，總共 7 個 USB ports。",
+      "ttft_sec": 6.333,
+      "tps": 2.23,
+      "total_tokens": 37,
+      "total_sec": 16.619,
+      "mem_after_gen_gb": 2.88,
+      "retrieved_chunks": [
+        {
+          "id": 7,
+          "model": "AORUS MASTER 16 BZH",
+          "key": "連接埠",
+          "text": "技嘉筆電 AORUS MASTER 16 BZH 的 連接埠 規格為：Left Side:, 1 x DC in, 1 x RJ-45, 1 x HDMI 2.1, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™5 (support USB4, DisplayPort™ 2.1 and Power Delivery 3.0), Right Side:, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™4 (support USB4, DisplayPort™ 1.4 and Power Delivery 3.0), 1 x MicroSD (UHS-II), 1 x Audio Jack support mic / headphone combo。",
+          "score": 0.6137
+        },
+        {
+          "id": 24,
+          "model": "AORUS MASTER 16 BYH",
+          "key": "連接埠",
+          "text": "技嘉筆電 AORUS MASTER 16 BYH 的 連接埠 規格為：Left Side:, 1 x DC in, 1 x RJ-45, 1 x HDMI 2.1, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™5 (support USB4, DisplayPort™ 2.1 and Power Delivery 3.0), Right Side:, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™4 (support USB4, DisplayPort™ 1.4 and Power Delivery 3.0), 1 x MicroSD (UHS-II), 1 x Audio Jack support mic / headphone combo。",
+          "score": 0.6132
+        },
+        {
+          "id": 41,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "連接埠",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 連接埠 規格為：Left Side:, 1 x DC in, 1 x RJ-45, 1 x HDMI 2.1, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™5 (support USB4, DisplayPort™ 2.1 and Power Delivery 3.0), Right Side:, 1 x Type-A support USB3.2 Gen2, 1 x Type-C with Thunderbolt™4 (support USB4, DisplayPort™ 1.4 and Power Delivery 3.0), 1 x MicroSD (UHS-II), 1 x Audio Jack support mic / headphone combo。",
+          "score": 0.6063
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "category": "英文查詢",
+      "query": "What GPU does the BXH model have?",
+      "expected_key": "顯示晶片",
+      "expected_hint": [
+        "5070",
+        "RTX"
+      ],
+      "retrieval_hit": true,
+      "answer_pass": true,
+      "judge_reason": "回答與ground truth完全一致，BXH型號的GPU正確為RTX 5070 Ti，搭配12GB GDDR7和140W功率規格。",
+      "scores": {
+        "faithfulness": {
+          "score": 5,
+          "reason": "RAG回答完全基於retrieved context，逐字引用顯示晶片規格，未添加context中沒有的資訊。"
+        },
+        "correctness": {
+          "score": 5,
+          "reason": "回答與ground truth完全一致，BXH型號的GPU正確為RTX 5070 Ti，搭配12GB GDDR7和140W功率規格。"
+        },
+        "conciseness": {
+          "score": 5,
+          "reason": "回答簡潔直接，提供核心GPU規格資訊而無冗餘內容。"
+        }
+      },
+      "answer": "技嘉筆電 AORUS MASTER 16 BXH 的顯示晶片規格為：NVIDIA® GeForce RTX™ 5070 Ti Laptop GPU, 12GB GDDR7, 140W Maximum Graphics Power with Dynamic Boost*。",
+      "ttft_sec": 6.096,
+      "tps": 2.55,
+      "total_tokens": 58,
+      "total_sec": 22.734,
+      "mem_after_gen_gb": 2.61,
+      "retrieved_chunks": [
+        {
+          "id": 36,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "顯示晶片",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 顯示晶片 規格為：NVIDIA® GeForce RTX™ 5070 Ti Laptop GPU, 12GB GDDR7, 140W Maximum Graphics Power with Dynamic Boost*, AI Boost : 1962 MHz (1762 MHz Boost Clock + 200 MHz OC)*, *May vary by scenario。",
+          "score": 0.5779
+        },
+        {
+          "id": 35,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "中央處理器",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 中央處理器 規格為：Intel® Core™ Ultra 9 Processor 275HX (36MB cache, up to 5.4 GHz, 24 cores, 24 threads)。",
+          "score": 0.5642
+        },
+        {
+          "id": 37,
+          "model": "AORUS MASTER 16 BXH",
+          "key": "顯示器",
+          "text": "技嘉筆電 AORUS MASTER 16 BXH 的 顯示器 規格為：16\" 16:10, OLED WQXGA (2560x1600) 240Hz, 1ms, DCIP-3 100%, 500nits (peak), 1,000,000:1, NVIDIA® G-SYNC®, NVIDIA® Advanced Optimus, VESA DisplayHDR True Black 500, VESA ClearMR 10000, Pantone® Validated, TÜV Rheinland Low Blue Light, Dolby Vision®。",
+          "score": 0.5279
+        }
+      ]
+    }
+  ]
+}

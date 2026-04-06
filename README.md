@@ -114,8 +114,42 @@ uv run python src/rag.py --query "..." --top-k 5
 ### 執行評測
 
 ```bash
-uv run python src/evaluate.py
+uv run python src/evaluate.py            # 3B 模型（預設）
+uv run python src/evaluate.py --model 7b # 7B 模型
 ```
+
+### LLM Judge（Claude API 自動評分）
+
+設定 API Key：
+
+```bash
+cp .env.example .env
+# 編輯 .env，填入你的 ANTHROPIC_API_KEY
+```
+
+**方式一：對已有的 eval 結果補充評分（`llm_judge.py`）**
+
+```bash
+uv run python src/llm_judge.py --input data/eval_results_3b.json
+uv run python src/llm_judge.py --input data/eval_results_7b.json
+```
+
+**方式二：直接跑 RAG + Claude 即時評分（`evaluate_judge.py`）**
+
+支援 `--judge-mode` 參數選擇評分機制：
+
+```bash
+# binary 模式（預設）：correct / incorrect + 一句理由
+uv run python src/evaluate_judge.py --model 3b
+uv run python src/evaluate_judge.py --model 7b
+
+# score 模式：三維度 1-5 分（faithfulness / correctness / conciseness）
+uv run python src/evaluate_judge.py --model 3b --judge-mode score
+uv run python src/evaluate_judge.py --model 7b --judge-mode score
+```
+
+Ground truth 來源為 `data/raw/raw_specs.json`（完整官方規格），pass 條件為 correctness ≥ 4。
+輸出儲存至 `data/judge_results_{model}_{mode}.json`，包含每題評分與彙總統計。
 
 ---
 
@@ -128,8 +162,10 @@ gigabyte-rag-assistant/
 │   ├── embedder.py     # Step 4: bge-m3 embedding + 建立 FAISS index
 │   ├── retriever.py    # Step 5: cosine similarity 檢索
 │   ├── generator.py    # Step 6: llama.cpp 推論 + streaming
-│   ├── rag.py          # Step 7: 完整 RAG pipeline 入口
-│   └── evaluate.py     # Step 8: 系統評測
+│   ├── rag.py              # Step 7: 完整 RAG pipeline 入口
+│   ├── evaluate.py         # Step 8: 系統評測（關鍵字比對）
+│   ├── llm_judge.py        # LLM Judge: 對已有 eval 結果補充評分
+│   └── evaluate_judge.py   # LLM Judge: RAG + Claude 即時評分（binary / score）
 ├── data/
 │   ├── raw/
 │   │   └── raw_specs.json      # GIGABYTE 規格資料（3 型號 × 17 規格）
@@ -225,3 +261,27 @@ ClearMR 10000, Pantone® Validated, TÜV Low Blue Light, Dolby Vision®
 ```
 
 Q3_K_M 將權重壓縮至約 3.5 bits/param（vs Q4_K_M 的 4.5 bits）。在長序列末端，注意力機制所需的精度不足，導致模型對序列尾端的 token 產生理解偏差，誤判「資料中無相關資訊」。這是一個典型的**量化 + 長文本尾端衰減**問題，3B Q4_K_M 因量化精度較高反而表現更好。
+
+---
+
+## LLM as a Judge 評測結果（feature/llm-judge）
+
+使用 Claude Haiku 作為評審，Ground Truth 為 `raw_specs.json` 完整規格資料。
+
+### 3B Q4_K_M — Score 模式
+
+![LLM Judge 3B 結果](llm_judge_3b.png)
+
+### 7B Q3_K_M — Score 模式
+
+![LLM Judge 7B 結果](llm_judge_7b.png)
+
+### LLM Judge 設計重點
+
+| 項目 | 說明 |
+|------|------|
+| Judge 模型 | Claude Haiku（`claude-haiku-4-5-20251001`） |
+| Ground Truth | `data/raw/raw_specs.json` 完整官方規格（非手寫答案） |
+| Binary 模式 | correct / incorrect + 一句理由 |
+| Score 模式 | faithfulness / correctness / conciseness 各 1-5 分，correctness ≥ 4 為 pass |
+| 輸出格式 | JSON 含 `summary`（彙總統計）與 `results`（每題明細） |

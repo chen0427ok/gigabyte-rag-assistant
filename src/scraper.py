@@ -1,9 +1,13 @@
 """
-Step 2 - Phase 1: Playwright scraper for GIGABYTE AORUS MASTER 16 AM6H
-Launches headless Chromium, waits for spec table to load, extracts raw HTML.
+Step 2 - Phase 1: Scraper for GIGABYTE AORUS MASTER 16 AM6H.
+
+Modes:
+  --local <path>  Copy a locally saved HTML file (no network request needed).
+  (default)       Launch headless Chromium and scrape the live URL.
 """
 
 import asyncio
+import sys
 from pathlib import Path
 from playwright.async_api import async_playwright
 
@@ -53,9 +57,9 @@ async def scrape() -> str:
 
         # Wait for spec table to appear after tab click
         spec_candidates = [
+            ".desktop-spec-content",
+            ".spec-content-section",
             "#Specification table",
-            "#kf table",
-            ".spec-table table",
             "table",
         ]
         matched = None
@@ -63,17 +67,27 @@ async def scrape() -> str:
             try:
                 await page.wait_for_selector(selector, timeout=15_000)
                 matched = selector
-                print(f"[scraper] Spec table found via: '{selector}'")
+                print(f"[scraper] Spec section found via: '{selector}'")
                 break
             except Exception:
                 print(f"[scraper] Selector not found: '{selector}', trying next...")
 
         if matched is None:
-            print("[scraper] WARNING: No spec table matched, saving page as-is.")
+            print("[scraper] WARNING: No spec section matched, saving page as-is.")
 
         html = await page.content()
         await browser.close()
 
+    return html
+
+
+def load_local(path: str) -> str:
+    """Read a locally saved HTML file and return its content."""
+    src = Path(path)
+    if not src.exists():
+        raise FileNotFoundError(f"Local HTML not found: {src}")
+    html = src.read_text(encoding="utf-8")
+    print(f"[scraper] Loaded local HTML from {src}  ({src.stat().st_size // 1024} KB)")
     return html
 
 
@@ -85,5 +99,8 @@ def save_html(html: str) -> None:
 
 
 if __name__ == "__main__":
-    html = asyncio.run(scrape())
+    if len(sys.argv) >= 3 and sys.argv[1] == "--local":
+        html = load_local(sys.argv[2])
+    else:
+        html = asyncio.run(scrape())
     save_html(html)

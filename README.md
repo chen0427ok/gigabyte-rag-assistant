@@ -82,7 +82,31 @@ Step 3: 1.54 × 1.2 ≈ 1.84 GB（保守）
 uv sync
 ```
 
-### 下載模型
+### Step 1：抓取規格資料 → `data/raw/raw_specs.json`
+
+有兩種方式取得規格 HTML，擇一執行後再執行 parser：
+
+**方式 A：使用本地已儲存的 HTML（推薦，不需網路）**
+
+先在瀏覽器開啟 [AORUS MASTER 16 AM6H](https://www.gigabyte.com/tw/Laptop/AORUS-MASTER-16-AM6H)，切換到「產品規格」分頁後，按 `Cmd+S` 另存為 HTML 檔案，然後執行：
+
+```bash
+uv run python src/scraper.py --local "path/to/saved.html"
+uv run python src/parser.py
+```
+
+**方式 B：Playwright 自動抓取（需網路）**
+
+```bash
+uv run python src/scraper.py   # 開啟瀏覽器自動抓取並儲存 HTML
+uv run python src/parser.py    # 解析 HTML → raw_specs.json
+```
+
+兩種方式都會輸出：
+- `data/raw/aorus_master_16.html`：原始 HTML
+- `data/raw/raw_specs.json`：3 個型號 × 17 項規格的結構化資料
+
+### Step 2：下載模型
 
 ```bash
 mkdir -p models
@@ -91,7 +115,7 @@ uv run huggingface-cli download Qwen/Qwen2.5-3B-Instruct-GGUF \
   --local-dir models/
 ```
 
-### 建立向量索引
+### Step 3：建立向量索引
 
 ```bash
 uv run python src/chunker.py    # 產生 51 個 chunks
@@ -158,17 +182,20 @@ Ground truth 來源為 `data/raw/raw_specs.json`（完整官方規格），pass 
 ```
 gigabyte-rag-assistant/
 ├── src/
-│   ├── chunker.py      # Step 3: 將規格 JSON 切成文字 chunks
-│   ├── embedder.py     # Step 4: bge-m3 embedding + 建立 FAISS index
-│   ├── retriever.py    # Step 5: cosine similarity 檢索
-│   ├── generator.py    # Step 6: llama.cpp 推論 + streaming
-│   ├── rag.py              # Step 7: 完整 RAG pipeline 入口
-│   ├── evaluate.py         # Step 8: 系統評測（關鍵字比對）
+│   ├── scraper.py      # Step 1a: 抓取或載入 GIGABYTE 規格頁面 HTML
+│   ├── parser.py       # Step 1b: 解析 HTML → raw_specs.json
+│   ├── chunker.py      # Step 2: 將規格 JSON 切成文字 chunks
+│   ├── embedder.py     # Step 3: bge-m3 embedding + 建立 FAISS index
+│   ├── retriever.py    # Step 4: cosine similarity 檢索
+│   ├── generator.py    # Step 5: llama.cpp 推論 + streaming
+│   ├── rag.py              # Step 6: 完整 RAG pipeline 入口
+│   ├── evaluate.py         # Step 7: 系統評測（關鍵字比對）
 │   ├── llm_judge.py        # LLM Judge: 對已有 eval 結果補充評分
 │   └── evaluate_judge.py   # LLM Judge: RAG + Claude 即時評分（binary / score）
 ├── data/
 │   ├── raw/
-│   │   └── raw_specs.json      # GIGABYTE 規格資料（3 型號 × 17 規格）
+│   │   ├── aorus_master_16.html  # scraper.py 輸出的原始 HTML
+│   │   └── raw_specs.json        # parser.py 輸出（3 型號 × 17 規格）
 │   ├── chunks/
 │   │   └── chunks.json         # 51 個文字 chunks
 │   └── index/
